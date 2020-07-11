@@ -2,6 +2,8 @@ import csv
 import pandas as pd
 
 from pathlib import Path
+from sqlalchemy import create_engine, Column, Integer, String, schema, DDL
+from sqlalchemy.ext.declarative import declarative_base
 
 FILEPATH = [f for f in Path('./data/').iterdir()]
 
@@ -10,25 +12,23 @@ class CustomDataFrame:
 
     def __init__(self, file):
         self.my_dfs = self.get_df_from_csv(file)
-        # self.headers = self.get_headers(file)
+        self.tables = []
+
 
     def get_df_from_csv(self, files) -> pd.DataFrame():
-        data_frames = []
+        data_frames, table_names = [], []
 
         for file in files:
-            filename = file.name[:-4]
-
+            df_name = file.name[:-4]
+            table_names.append(df_name)
             with open(file) as f:
                 filename_df = pd.read_csv(f, header=0, sep=',')
             data_frames.append(filename_df)
 
+            self.tables = table_names
+
         return data_frames
 
-"""
-class Schema:
-    def __init__(self):
-        self.
-"""
 
 def main():
     a = CustomDataFrame(FILEPATH)
