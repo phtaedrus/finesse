@@ -1,3 +1,6 @@
+
+
+import ddl
 import csv
 import numpy as np
 import pandas as pd
@@ -35,12 +38,14 @@ class CustomDataFrame:
 
 def main():
     a = CustomDataFrame(FILEPATHS)
-    print(a.my_dfs[0].columns)
+    #print(a.my_dfs[0].columns)
     #print(a.my_dfs[0].describe())
-    print(a.my_dfs[1].columns)
+    #print(a.my_dfs[1].columns)
     #print(a.my_dfs[1].describe())
-    print(a.my_dfs[2].columns)
+    #print(a.my_dfs[2].columns)
     #print(a.my_dfs[2].describe())
+    b = ddl.RawMetrics()
+    print(b)
 
 
 if __name__ == '__main__':

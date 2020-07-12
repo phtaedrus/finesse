@@ -1,11 +1,14 @@
-import process_data
 
-from date import datetime
-from sqlalchemy import create_engine, Column, Integer, String, schema
+import sqlalchemy
+
+from datetime import date
+from sqlalchemy import Column, Integer, String, schema
+from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.types import Date, Text
 
 Base = declarative_base()
-ENGINE = create_engine('sqlite:///finesse.db')
+engine = create_engine('sqlite:///finesse_db', echo=True)
 
 
 class TopAppearances(Base):
@@ -17,12 +20,6 @@ class TopAppearances(Base):
     days_top_hashtag = Column(Integer)
 
 
-    def __repr__(self):
-        return f"TopAppearances->(url_hash={self.url_hash},\
-                                  post_url={self.post_url},\
-                                  days_top_hashtag={self.days_top_hashtag})"
-
-
 class PostMetricsAndComments(Base):
 
     __tablename__ = 'post_metrics_and_comments'
@@ -31,28 +28,15 @@ class PostMetricsAndComments(Base):
     url_hash = Column(String)
     post_url = Column(String)
     username = Column(String)
-    date_posted = Column(DATE)
+    date_posted = Column(Date)
     img_urls = Column(Text)
-    caption = Column(Text, length=None, convert_unicode=True)
+    caption = Column(Text)
     max_likes = Column(Integer)
     max_views = Column(Integer)
     followers_total = Column(Integer)
     following_total = Column(Integer)
-    concat_comments = Column(Text, length=None, convert_unicode=True)
+    concat_comments = Column(Text)
 
-
-    def __repr__(self):
-        return f"PostMetricsAndComments->(  url_hash={self.url_hash},\
-                                            post_url={self.post_url},\
-                                            username={self.username},\
-                                            date_posted = {self.date_posted},\
-                                            img_urls= {self.img_urls},\
-                                            caption = {self.caption},\
-                                            max_likes = {self.max_likes},\
-                                            max_views = {self.max_views},\
-                                            followers_total = {self.followers_total},\
-                                            following_total = {self.following_total},\
-                                            concat_comments = {self.concat_comments})"
 
 class RawMetrics(Base):
 
@@ -64,14 +48,8 @@ class RawMetrics(Base):
     num_like = Column(Integer, nullable=True)
     num_comments = Column(Integer, nullable=True)
     num_views = Column(Integer, nullable= True)
-    date_time_collected = Column(TIMESTAMP)
+    date_time_collected = Column(Date)
 
 
-    def __repr__(self):
-        return f"RawMetrics->( url_hash={self.url_hash},\
-                               post_url={self.post_url},\
-                               num_like={self.num_like},\
-                               num_comments={self.num_comments},\
-                               num_views={self.num_views},\
-                               date_time_collected={self.date_time_collected})"
+
 
