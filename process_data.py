@@ -45,7 +45,7 @@ def main():
     #print(a.my_dfs[2].columns)
     #print(a.my_dfs[2].describe())
     b = ddl.RawMetrics()
-    print(b)
+    print(b.__table__)
 
 
 if __name__ == '__main__':
