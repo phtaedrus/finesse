@@ -1,14 +1,18 @@
+
+
+import ddl
 import csv
+import numpy as np
 import pandas as pd
 
 from pathlib import Path
-from sqlalchemy import create_engine, Column, Integer, String, schema, DDL
-from sqlalchemy.ext.declarative import declarative_base
 
-FILEPATH = [f for f in Path('./data/').iterdir()]
+
+FILEPATHS = [f for f in Path('./data/').iterdir()]
 
 
 class CustomDataFrame:
+    """Creates custom data frame objects"""
 
     def __init__(self, file):
         self.my_dfs = self.get_df_from_csv(file)
@@ -16,6 +20,8 @@ class CustomDataFrame:
 
 
     def get_df_from_csv(self, files) -> pd.DataFrame():
+        """ """
+
         data_frames, table_names = [], []
 
         for file in files:
@@ -31,13 +37,15 @@ class CustomDataFrame:
 
 
 def main():
-    a = CustomDataFrame(FILEPATH)
-    print(a.my_dfs[0].columns)
-    print(a.my_dfs[0].describe())
-    print(a.my_dfs[1].columns)
-    print(a.my_dfs[1].describe())
-    print(a.my_dfs[2].columns)
-    print(a.my_dfs[2].describe())
+    a = CustomDataFrame(FILEPATHS)
+    #print(a.my_dfs[0].columns)
+    #print(a.my_dfs[0].describe())
+    #print(a.my_dfs[1].columns)
+    #print(a.my_dfs[1].describe())
+    #print(a.my_dfs[2].columns)
+    #print(a.my_dfs[2].describe())
+    b = ddl.RawMetrics()
+    print(b.__table__)
 
 
 if __name__ == '__main__':
