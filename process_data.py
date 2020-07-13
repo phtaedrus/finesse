@@ -1,7 +1,7 @@
 from sqlalchemy import inspect
 
 import ddl
-import csv
+import docstring
 import numpy as np
 import pandas as pd
 
@@ -28,7 +28,16 @@ class CustomDataFrames:
         self.hash_df = pd.DataFrame()
 
     def get_df_from_csv(self, files) -> pd.DataFrame():
-        """DOCSTRING"""
+        """
+        Processes flat files and loads the data into a pandas dataframe.
+        Also updates the self.tables list.
+
+        args:
+        -self, files
+
+        output:
+        list of pd.Dataframe() objects
+        """
 
         data_frames, table_names = [], []
 
@@ -50,11 +59,33 @@ class CustomDataFrames:
         return data_frames
 
     def add_columns(self):
+        """
+        def add_columns() is the outside function that
+        uses private helper_functions:
+
+        -def _add_hashtag_df_columns()
+        -def _add_post_metrics_df_columns()
+        -def _add_raw_df_columns()
+
+        Also updates self.pd.Dataframe() objects
+
+        args:
+        -self
+
+
+        :returns:
+            _add_hashtag_df_columns(hash_df)
+            _add_post_metrics_df_columns(post_metrics_df)
+            _add_raw_df_columns(raw_df)
+        """
+
         hash_df, raw_df, post_metrics_df = self.base_dfs[0].copy(), \
                                            self.base_dfs[1].copy(), \
                                            self.base_dfs[2].copy()
 
         def _add_hashtag_df_columns(_df=hash_df):
+            """returns a modified copy of hash_df: pd.Dataframe()"""
+
             _df['segment_id'] = _df['post_url'] \
                 .str \
                 .slice(start=28, stop=39)
@@ -63,6 +94,8 @@ class CustomDataFrames:
             return hash_df
 
         def _add_post_metrics_df_columns(_df=post_metrics_df):
+            """returns a modified copy of post_metrics_df: pd.Dataframe()"""
+
             _df['segment_id'] = _df['post_url'] \
                 .str \
                 .slice(start=28, stop=39)
@@ -72,6 +105,8 @@ class CustomDataFrames:
             return post_metrics_df
 
         def _add_raw_df_columns(_df=raw_df):
+            """returns a modified copy of raw_df: pd.Dataframe()"""
+
             _df['segment_id'] = _df['post_url'].str.slice(start=28, stop=39)
 
             df = _df.reindex(columns=['post_url', 'segment_id', 'num_likes',
@@ -87,7 +122,16 @@ class CustomDataFrames:
 
 
 def load_to_sql(dfs: [pd.DataFrame]):
+    """
+    Loads modified pd.Dataframe() objects to sql database.
 
+    args:
+    -self, dfs: [pd.Dataframe]
+
+    output:
+    Log message
+    """
+    
     for i, df in enumerate(dfs):
         if i == 0:
             df.to_sql('top_appearances', ddl.engine,
