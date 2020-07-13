@@ -8,16 +8,17 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.types import Date, Text
 
 Base = declarative_base()
-engine = create_engine('sqlite:///finesse_db', echo=True)
+engine = create_engine('sqlite:///finesse_db', echo=False)
 
 
 class TopAppearances(Base):
+
     __tablename__ = 'top_appearances'
 
     id = Column(Integer, primary_key=True)
-    url_hash = Column(String, nullable=True)
     post_url = Column(String, nullable=False)
-    days_top_hashtag = Column(Integer)
+    segment_id = Column(String)
+    days_top_hashtag = Column("days_in_hashtag_top_section", Integer)
 
 
 class PostMetricsAndComments(Base):
@@ -25,8 +26,8 @@ class PostMetricsAndComments(Base):
     __tablename__ = 'post_metrics_and_comments'
 
     id = Column(Integer, primary_key=True)
-    url_hash = Column(String)
     post_url = Column(String)
+    segment_id = Column(String)
     username = Column(String)
     date_posted = Column(Date)
     img_urls = Column(Text)
@@ -43,12 +44,18 @@ class RawMetrics(Base):
     __tablename__ = 'raw_metrics'
 
     id = Column(Integer, primary_key=True)
-    url_hash = Column(String)
     post_url = Column(String)
+    segment_id = Column(String)
     num_like = Column(Integer, nullable=True)
     num_comments = Column(Integer, nullable=True)
     num_views = Column(Integer, nullable= True)
     date_time_collected = Column(Date)
+
+try:
+    Base.metadata.create_all(engine)
+    print('Database Schema Instantiated')
+except:
+    pass
 
 
 
