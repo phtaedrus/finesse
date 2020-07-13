@@ -131,7 +131,7 @@ def load_to_sql(dfs: [pd.DataFrame]):
     output:
     Log message
     """
-    
+
     for i, df in enumerate(dfs):
         if i == 0:
             df.to_sql('top_appearances', ddl.engine,
