@@ -1,6 +1,6 @@
-#FINESSE
+# FINESSE
 
-####Assumptions and Findings
+#### Assumptions and Findings
 1. Spark isn't needed at POC because the POC can be completed
 with small sample files. However, for production I think this is 
 encouraged. 
@@ -31,14 +31,20 @@ Example with our data:
 
 
 
-##RUN
-I. run the following command in your shell:
+## RUN
+I. Run the following commands in your terminal:
 
 `$ python ddl.py`
+
 
 Now a new sqlite3 db file called *finesse_db* will be created in local 
 directory.
 
-II.
+II. Next
+ 
+`$ python process_data.py`
 
+The local database (or db wherever the connection target is) should now 
+be loaded with relevant datatypes and values.
 
+III. 
