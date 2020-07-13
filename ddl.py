@@ -54,8 +54,9 @@ class RawMetrics(Base):
 try:
     Base.metadata.create_all(engine)
     print('Database Schema Instantiated')
-except:
-    pass
+except sqlalchemy.exc.DatabaseError as db_error:
+    print(db_error)
+
 
 
 

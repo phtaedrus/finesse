@@ -1,7 +1,7 @@
 from sqlalchemy import inspect
 
 import ddl
-import docstring
+
 import numpy as np
 import pandas as pd
 
