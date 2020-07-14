@@ -14,7 +14,7 @@ directory.
 
 II. Next
  
-`$ python process_data.py`
+`$ python main.py`
 
 The local database (or db wherever the connection target is) should now 
 be loaded with relevant datatypes and values.
