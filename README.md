@@ -28,6 +28,9 @@ III. Last command will do additional sql for normalization
 
 ##### Architecture
 
+![Diagram](img/Finesse_POC_Architecture.png)
+
+
 1. With the release of 
 [spark3.0]("https://spark.apache.org/releases/spark-release-3-0-0.html")
 and additional support and distributed pandas dataframes, I wanted to 
