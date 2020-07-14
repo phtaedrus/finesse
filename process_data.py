@@ -1,17 +1,17 @@
 from sqlalchemy import inspect
 
 import ddl
-
 import numpy as np
 import pandas as pd
 
 from pathlib import Path
 
+#modify pandas display
 pd.set_option("display.expand_frame_repr", True)
 pd.set_option("display.max_rows", 30)
 pd.set_option("display.max_columns", 30)
 
-
+#Not really a constant but once read should stay static.
 FILEPATHS = [f for f in Path('./data/').iterdir()][:]
 
 
@@ -19,8 +19,6 @@ class CustomDataFrames:
     """Creates custom data frame objects"""
 
     def __init__(self, file):
-        # headers =
-        # self.headers = [column.name for column in inspect(ddl.TopAppearances).c]
         self.base_dfs = self.get_df_from_csv(file)
         self.tables = []
         self.raw_df = pd.DataFrame()
@@ -45,15 +43,11 @@ class CustomDataFrames:
             table_names.append(file.name[:-4])
             index = pd.Index
             with open(file) as f:
-                filename_df = pd.read_csv(f,
-                                          header=0,
-                                          sep=',',
-                                          index_col=None) \
+                filename_df = pd.read_csv(f, header=0, sep=',', index_col=None) \
                     .rename_axis('id') \
                     .fillna(np.nan)
 
             data_frames.append(filename_df)
-
             self.tables = table_names
 
         return data_frames
