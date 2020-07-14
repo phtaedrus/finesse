@@ -62,7 +62,7 @@ Example with our data:
 ![ExampleScreenshot](img/screenshot.png)
 
 ##### Additional Framework Improvements
-- move main to a separate main.py 
+- ~~move main to a separate main.py~~  
 - Single Responsibility-
 - consider process_data.py --> to custom_data_frame.py
 - consider moving load_to_sql --> to seperate load_to_sql.py 
@@ -71,7 +71,7 @@ Example with our data:
 
 2. load service class for process dataframe. input:pd.Dataframe(), output:pd.Dataframe()
 
-3. process_data service
+3. ~~normalize_data service~~
 
 
 
