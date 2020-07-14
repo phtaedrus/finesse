@@ -13,7 +13,7 @@ engine = create_engine('sqlite:///finesse_db', echo=False)
 
 class TopAppearances(Base):
 
-    __tablename__ = 'top_appearances'
+    __tablename__ = 'hashtag_top_appearances'
 
     id = Column(Integer, primary_key=True)
     post_url = Column(String, nullable=False)
@@ -41,7 +41,7 @@ class PostMetricsAndComments(Base):
 
 class RawMetrics(Base):
 
-    __tablename__ = 'raw_metrics'
+    __tablename__ = 'raw_post_metrics'
 
     id = Column(Integer, primary_key=True)
     post_url = Column(String)
