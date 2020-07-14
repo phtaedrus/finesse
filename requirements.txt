@@ -1,0 +1,10 @@
+certifi==2020.6.20
+mkl-fft==1.1.0
+mkl-random==1.1.1
+mkl-service==2.3.0
+numpy==1.18.5
+pandas @ file:///tmp/build/80754af9/pandas_1592841659173/work
+python-dateutil==2.8.1
+pytz==2020.1
+six==1.15.0
+SQLAlchemy @ file:///tmp/build/80754af9/sqlalchemy_1593446299926/work
