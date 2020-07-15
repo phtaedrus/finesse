@@ -19,10 +19,6 @@ II. Next
 The local database (or db wherever the connection target is) should now 
 be loaded with relevant datatypes and values.
 
-III. Last command will do additional sql for normalization
-
-`$ python etl.py`
-
 
 #### Assumptions, Findings, and Architecture Thesis
 
@@ -64,7 +60,7 @@ Example with our data:
 
 ![ExampleScreenshot](img/screenshot.png)
 
-##### Additional Framework Improvements
+##### TODO
 - ~~move main to a separate main.py~~  
 - Single Responsibility-
 - consider process_data.py --> to custom_data_frame.py
@@ -76,5 +72,10 @@ Example with our data:
 
 3. ~~normalize_data service~~
 
+__RUN__
+
+III. Last command will do additional sql for normalization
+
+`$ python etl.py`
 
 
