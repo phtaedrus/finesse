@@ -21,7 +21,10 @@ be loaded with relevant datatypes and values.
 
 
 #### Assumptions, Findings, and Architecture Thesis
-
+- This data engineering project intends build an interesting framework that 
+doesn't narrow the scope of the future dev and allows for ad-hoc analysis
+with super fast turnaround times. However, leaving functional pipelines
+ in place is also is also the central thesis here. 
 ##### Architecture
 
 ![Diagram](img/Finesse_POC_Architecture.png)
@@ -29,9 +32,8 @@ be loaded with relevant datatypes and values.
 
 1. With the release of 
 [Spark3.0](https://spark.apache.org/releases/spark-release-3-0-0.html)
-and additional support and distributed pandas dataframes, I wanted to 
-build something 
-I think it's especially important to build a maleable structure. SQL and Pandas
+and additional support and distributed pandas dataframes, versatility continues
+ to reign paramount in data utilities. So SQL and Pandas
 may not both be needed in this context, however, together they provide a 
 duo support system and modular framework that removes the bulk of 
 processing from the (presumed lightweight database) relational store.
@@ -47,7 +49,9 @@ processing from the (presumed lightweight database) relational store.
 Because of this flexibility, data can be modified at the pre-processing (pandas)  
 level or with SQL dialect after the load.
 
-* #####There is some new and very cool tech called [Datasette](https://datasette.readthedocs.io/en/stable/index.html) 
+
+
+##### There is some new and very cool tech called [Datasette](https://datasette.readthedocs.io/en/stable/index.html) 
  It is  a lightweight tool that sits (alongside) flat files 
 that allows for quick data 
 interaction and analysis. Depending on the volume, velocity, and variety
@@ -60,7 +64,7 @@ Example with our data:
 
 ![ExampleScreenshot](img/screenshot.png)
 
-##### TODO
+##### Future Pull Requests
 - ~~move main to a separate main.py~~  
 - Single Responsibility-
 - consider process_data.py --> to custom_data_frame.py
@@ -72,10 +76,8 @@ Example with our data:
 
 3. ~~normalize_data service~~
 
-__RUN__
+4. Unit tests
 
-III. Last command will do additional sql for normalization
-
-`$ python etl.py`
+5. `$ python etl.py`
 
 
