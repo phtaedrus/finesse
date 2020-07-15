@@ -60,7 +60,16 @@ class NormalizeDataService(CustomDataFrames):
         self.df_name = df_name
 
     def add_df_columns(self):
-        """returns a modified copy of hash_df: pd.Dataframe()"""
+        """
+        Adds additional columns to dataframes and updates
+        the object state.
+
+        args:
+        -self
+
+        output:
+        - self.df: pd.Dataframe()
+        """
         _df = self.df.copy()
 
         try:
