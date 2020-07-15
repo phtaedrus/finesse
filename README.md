@@ -27,8 +27,7 @@ be loaded with relevant datatypes and values.
 ![Diagram](img/Finesse_POC_Architecture.png)
 
 
-1. With the release of 
-[spark3.0]("https://spark.apache.org/releases/spark-release-3-0-0.html")
+1. With the release of [spark3.0]("https://spark.apache.org/releases/spark-release-3-0-0.html")
 and additional support and distributed pandas dataframes, I wanted to 
 build something 
 I think it's especially important to build a maleable structure. SQL and Pandas
